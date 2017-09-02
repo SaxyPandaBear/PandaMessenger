@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'TWITTER_CONSUMER_KEY', "\"$TWITTER_CONSUMER_KEY\""
+        buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', "\"$TWITTER_CONSUMER_SECRET\""
     }
     buildTypes {
         release {
@@ -26,5 +29,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
+    compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
 }
