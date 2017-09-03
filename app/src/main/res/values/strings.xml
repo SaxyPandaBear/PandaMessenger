@@ -5,6 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="fragment_home">Home Fragment accessed</string>
     <string name="fragment_twitter">Twitter Fragment accessed</string>
+    <string name="fragment_twitter_logged_in">Successfully logged into Twitter</string>
 
     <string name="twitter">Twitter</string>
     <string name="facebook">Facebook</string>

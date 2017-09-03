@@ -8,26 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.gmu.cs477.pandamessenger.BuildConfig;
 import edu.gmu.cs477.pandamessenger.R;
 
 /**
- * Fragment interface with Twitter
+ * Fragment that is used after a successful login
  *
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link OnTwitterFragmentInteraction} interface
  * to handle interaction events.
- * Use the {@link TwitterFragment#newInstance} factory method to
+ * Use the {@link ActiveTwitterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TwitterFragment extends Fragment {
-    private static final String CONSUMER_KEY = BuildConfig.TWITTER_CONSUMER_KEY;
-    private static final String CONSUMER_SECRET = BuildConfig.TWITTER_CONSUMER_SECRET;
+public class ActiveTwitterFragment extends Fragment {
 
     private OnTwitterFragmentInteraction mListener;
 
-    public TwitterFragment() {
+    public ActiveTwitterFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +32,11 @@ public class TwitterFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment TwitterFragment.
+     * @return A new instance of fragment ActiveTwitterFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TwitterFragment newInstance() {
-        TwitterFragment fragment = new TwitterFragment();
+    public static ActiveTwitterFragment newInstance() {
+        ActiveTwitterFragment fragment = new ActiveTwitterFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -54,7 +51,7 @@ public class TwitterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_twitter, container, false);
+        return inflater.inflate(R.layout.fragment_active_twitter, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
