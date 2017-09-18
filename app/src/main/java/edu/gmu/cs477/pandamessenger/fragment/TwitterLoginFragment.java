@@ -3,7 +3,6 @@ package edu.gmu.cs477.pandamessenger.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import edu.gmu.cs477.pandamessenger.R;
 import edu.gmu.cs477.pandamessenger.util.LogConstants;
+import edu.gmu.cs477.pandamessenger.util.LoginException;
 
 /**
  * Fragment interface to login to Twitter
@@ -59,6 +59,7 @@ public class TwitterLoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // TODO: If already logged in, skip this fragment and use logged in fragment
+        Log.d(LogConstants.FRAGMENT_DEBUG, "TwitterLoginFragment onCreate() called");
     }
 
     @Override
@@ -71,6 +72,8 @@ public class TwitterLoginFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d(LogConstants.FRAGMENT_DEBUG, "TwitterLoginFragment onActivityResult() called");
 
         // Pass the activity result to the login button.
         loginButton.onActivityResult(requestCode, resultCode, data);
@@ -88,6 +91,12 @@ public class TwitterLoginFragment extends Fragment {
             // to initialize the login button.
             loginButton = view.findViewById(R.id.twitter_login_button);
             loginButton.setCallback(new Callback<TwitterSession>() {
+                {
+                    // Debug code block
+                    Log.d(LogConstants.FRAGMENT_DEBUG, "TwitterSession Callback object created");
+                }
+
+
                 @Override
                 public void success(Result<TwitterSession> result) {
                     // Do something with result, which provides a TwitterSession for making API calls
@@ -106,7 +115,8 @@ public class TwitterLoginFragment extends Fragment {
                 public void failure(TwitterException exception) {
                     // Do something on failure
                     // TODO: Pop up for failed login?, reset state?
-                    throw exception;
+                    Log.d(LogConstants.FRAGMENT_DEBUG, "Failed to authenticate");
+                    throw new LoginException(SocialMediaFragmentType.TWITTER, exception.getMessage());
                 }
             });
         } else {

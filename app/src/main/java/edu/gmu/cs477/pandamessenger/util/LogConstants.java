@@ -7,4 +7,6 @@ public class LogConstants {
     public static final String APP_STATE_UPDATE = "[App State Update]";
 
     public static final String INTERNAL_ERROR = "[Internal Error]";
+
+    public static final String FRAGMENT_DEBUG = "[Fragment Debug]";
 }

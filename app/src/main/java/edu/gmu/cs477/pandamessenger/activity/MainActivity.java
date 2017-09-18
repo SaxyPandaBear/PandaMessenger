@@ -89,12 +89,13 @@ public class MainActivity extends Activity implements
             // then we don't need to do anything and should return or else
             // we could end up with overlapping fragments.
             if (savedInstanceState != null) {
+                Log.d(LogConstants.APP_STATE_UPDATE, "Activity already has saved instance state. Terminating creation.");
                 return;
             }
 
             // Create a new Fragment to be placed in the activity layout
             Fragment fragment = createNewFragment();
-            Log.d(LogConstants.FRAGMENT_CREATION, String.format("%s created", currentlyActiveFragment));
+            Log.d(LogConstants.FRAGMENT_CREATION, String.format("New %s created", currentlyActiveFragment));
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments

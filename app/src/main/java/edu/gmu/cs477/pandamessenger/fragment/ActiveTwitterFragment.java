@@ -34,7 +34,6 @@ public class ActiveTwitterFragment extends Fragment {
      *
      * @return A new instance of fragment ActiveTwitterFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ActiveTwitterFragment newInstance() {
         ActiveTwitterFragment fragment = new ActiveTwitterFragment();
         Bundle args = new Bundle();
