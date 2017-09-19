@@ -10,6 +10,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
 
+import java.util.Locale;
+
 import edu.gmu.cs477.pandamessenger.R;
 import edu.gmu.cs477.pandamessenger.fragment.ActiveTwitterFragment;
 import edu.gmu.cs477.pandamessenger.fragment.HomeFragment;
@@ -47,6 +49,7 @@ public class MainActivity extends Activity implements
                     updateFragmentView();
                     break;
                 default:
+                    Log.d(LogConstants.INTERNAL_ERROR, String.format(Locale.US, "Navigation ID %d not recognized", item.getItemId()));
                     currentlyActiveFragment = SocialMediaFragmentType.HOME;
                     updateFragmentView();
                     break;
@@ -69,7 +72,9 @@ public class MainActivity extends Activity implements
         switch (currentlyActiveFragment) {
             case HOME: return HomeFragment.newInstance();
             case TWITTER: return TwitterLoginFragment.newInstance();
-            default: return HomeFragment.newInstance();
+            default:
+                Log.d(LogConstants.INTERNAL_ERROR, String.format(Locale.US, "Current fragment, %s, not recognized", currentlyActiveFragment));
+                return HomeFragment.newInstance();
         }
     }
 
@@ -105,6 +110,9 @@ public class MainActivity extends Activity implements
             getFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, fragment).commit();
         }
+        else {
+            Log.d(LogConstants.FRAGMENT_CREATION, "Fragment container is null");
+        }
     }
 
     @Override
@@ -125,7 +133,9 @@ public class MainActivity extends Activity implements
         switch (currentlyActiveFragment) {
             case HOME: return R.id.fragment_home;
             case TWITTER: return R.id.fragment_twitter_login;
-            default: return R.id.fragment_home;
+            default:
+                Log.d(LogConstants.INTERNAL_ERROR, String.format(Locale.US, "Current fragment, %s, not recognized", currentlyActiveFragment));
+                return R.id.fragment_home;
         }
     }
 
